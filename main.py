@@ -2,7 +2,10 @@ import os
 import sys
 from dotenv import load_dotenv
 from google import genai
-from google.genai import types
+
+
+from prompts.prompt import system_prompt
+from functions.get_files_info import schema_get_files_info, available_functions
 
 
 def main():
@@ -22,12 +25,14 @@ def main():
     client = genai.Client(api_key=api_key)
 
     messages = [
-        types.Content(role="user", parts=[types.Part(text=user_prompt)]),
+        genai.types.Content(role="user", parts=[genai.types.Part(text=user_prompt)]),
     ]
     response = client.models.generate_content(
-        model='gemini-2.0-flash-001', 
-        contents=messages,  
-    )
+        model="gemini-2.0-flash-001",
+        contents=messages,
+        config=genai.types.GenerateContentConfig(
+            tools=[available_functions], system_instruction=system_prompt
+        )
 
     if verbose:
         print(f"User prompt: {user_prompt}")
