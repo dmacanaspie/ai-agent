@@ -33,6 +33,7 @@ def main():
         config=genai.types.GenerateContentConfig(
             tools=[available_functions], system_instruction=system_prompt
         )
+    )
 
     if verbose:
         print(f"User prompt: {user_prompt}")

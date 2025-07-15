@@ -23,8 +23,10 @@ def get_file_content(working_directory, file_path):
                     f'[...File "{file_path}" truncated at {CHAR_LIMIT} characters]'
                 )
         return content
+
     except Exception as e:
         return f'Error reading file "{file_path}": {e}'
+
 
 schema_get_files_info = genai.types.FunctionDeclaration(
     name="get_files_info",
