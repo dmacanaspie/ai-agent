@@ -86,6 +86,7 @@ schema_write_file = genai.types.FunctionDeclaration(
         },
     ),
 )
+
 available_functions = genai.types.Tool(
     function_declarations=[
         schema_get_files_info,
