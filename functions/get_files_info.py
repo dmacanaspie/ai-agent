@@ -46,21 +46,21 @@ schema_get_files_info = genai.types.FunctionDeclaration(
 )
 
 schema_get_file_content = genai.types.FunctionDeclaration(
-    name="get_files_info",
-    description="Lists content of a file up to a pre-defined limit, constrained to the working directory.",
+    name="get_file_content",
+    description="Lists contents of a file up to a pre-defined limit, constrained to the working directory.",
     parameters=genai.types.Schema(
         type=genai.types.Type.OBJECT,
         properties={
             "directory": genai.types.Schema(
                 type=genai.types.Type.STRING,
-                description="Lists content of a file, relative to the working directory.",
+                description="Lists contents of a file, relative to the working directory.",
             ),
         },
     ),
 )
 
 schema_run_python_file = genai.types.FunctionDeclaration(
-    name="get_files_info",
+    name="run_python_file",
     description="Runs a python file, constrained to the working directory.",
     parameters=genai.types.Schema(
         type=genai.types.Type.OBJECT,
@@ -74,7 +74,7 @@ schema_run_python_file = genai.types.FunctionDeclaration(
 )
 
 schema_write_file = genai.types.FunctionDeclaration(
-    name="get_files_info",
+    name="write_file",
     description="Given a content string, writes content to a file. Creates a file if it doesn't exist and overwrites the file if it does. Constrained to the working directory.",
     parameters=genai.types.Schema(
         type=genai.types.Type.OBJECT,
